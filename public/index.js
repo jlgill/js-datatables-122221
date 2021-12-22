@@ -6,28 +6,36 @@ var table;
 
 // exposing loadData to FileMaker Script
 window.loadData = function (json) {
+  console.log(json);
   var obj = JSON.parse(json); // data from FM is a string
   var data = obj.data;
-  // return;
+  console.log(obj);
+    // return;
   // create column headers from data
-  var firstRecord = data[0];
-  var columns = [
-    { data: "fieldData.Id", title: "ID", visible: false },
-    { data: "fieldData.City", title: "City" },
-    { data: "fieldData.CompanyName", title: "Company" },
-    { data: "fieldData.State", title: "State" },
-    { data: "fieldData.StreetAddress", title: "Address" },
+    var columns = [
+    { data: "fieldData.id", title: "ID", visible: false },
+    { data: "fieldData.MasterExamComponentName", title: "Exam Component" },
+    { data: "fieldData.APPLICANT::applicantNameFirst", title: "First Name" },
+    { data: "fieldData.APPLICANT::applicantNameLast", title: "Last Name" },
+    { data: "fieldData.EMPLOYER::companyName", title: "Client" },
+    { data: "fieldData.EXAM::examExamType", title: "Exam Type" },
+    { data: "fieldData.flag_exception", title: "Exception" },
+    { data: "fieldData.bluesheetlineitemCompletedByAccountName", title: "Completed By"},
+    { data: "fieldData.bluesheetlineitemCompleteOnTimeStamp", title: "Completed On"},
   ];
 
   console.log(columns);
   // Create the DataTable, after destroying it if already exists
   if (table) table.destroy();
+  //query div with dtable tag and render data into DataTable
   table = $("#dtable").DataTable({
     paging: true,
     pageLength: 20,
     searching: true,
     colReorder: true,
+    //columns are vital! These are your data table header rows
     columns: columns,
+    //Duh, this is your data
     data: data,
   });
 
