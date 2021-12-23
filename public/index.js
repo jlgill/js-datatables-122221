@@ -33,6 +33,8 @@ window.loadData = function (json) {
     pageLength: 20,
     searching: true,
     colReorder: true,
+    //adding export buttons to save time crafting custom filemaker exports
+    buttons: ['copy', 'excel'],
     //columns are vital! These are your data table header rows
     columns: columns,
     //Duh, this is your data
@@ -47,4 +49,4 @@ window.loadData = function (json) {
 
     FileMaker.PerformScript("On Double Click Row", json);
   });
-};
+}

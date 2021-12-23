@@ -14,6 +14,7 @@
   "author": "jeremy@integratingmagic.io",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^3.4.1",
     "fm-webviewer-fetch": "^1.1.0",
     "regenerator-runtime": "^0.13.9"
   },
